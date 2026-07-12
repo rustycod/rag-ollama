@@ -70,7 +70,7 @@ def safe_ollama_request(model: str, messages: List[Dict], guardrail_checker: Gua
     """Make a safe request to Ollama with guardrails"""
     
     # Check input safety
-    input_check = guardrail_checker.check_input_safety(messages[-1]["content"] if messages else "")
+    input_check = guardrail_checker.c(messages[-1]["content"] if messages else "")
     if not input_check["is_safe"]:
         return {
             "error": "Input violates guardrails",
